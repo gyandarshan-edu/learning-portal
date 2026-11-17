@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 3–12 Learning Portal | © Vikram Singh 7018501289</title>
+  <style>
+    :root {
+      --primary: #0f4c5c;
+      --primary-light: #1b6b7d;
+      --accent: #2a9d8f;
+      --accent-soft: #e0f5f2;
+      --bg-top: #e8f4f2;
+      --bg-mid: #edf4fb;
+      --bg-bot: #f5f8fc;
+      --card: rgba(255, 255, 255, 0.94);
+      --text: #102a43;
+      --muted: #486581;
+      --border: rgba(15, 76, 92, 0.14);
+      --shadow: 0 6px 20px rgba(15, 76, 92, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    input { -webkit-user-select: text; -moz-user-select: text; user-select: text; }
+
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b3948 0%, #135d66 100%);
+      color: #ffffff;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(11, 57, 72, 0.16);
+    }
+
+    .brand { display: flex; align-items: center; gap: 8px; }
+    .brand-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    header h1 { margin: 0; font-size: 16px; font-weight: 600; }
+
+    .header-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+    .user-pill {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .hdr-btn {
+      border: none;
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      color: #ffffff;
+    }
+    .edit-btn { background: rgba(255, 255, 255, 0.22); border: 1px solid rgba(255, 255, 255, 0.35); }
+    .logout-btn { background: rgba(239, 68, 68, 0.9); }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1080px;
+      margin: 12px auto;
+      padding: 0 10px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(120deg, rgba(15, 76, 92, 0.94), rgba(42, 157, 143, 0.9));
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-banner h2 { margin: 0 0 2px; font-size: 17px; font-weight: 600; }
+    .hero-banner p { margin: 0; font-size: 12px; color: rgba(255, 255, 255, 0.9); }
+
+    .search-wrap { width: 100%; max-width: 280px; }
+    .search-wrap input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: #ffffff;
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+    }
+
+    /* Notice / Notification Board */
+    .notice-board {
+      display: none;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #d97706;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .notice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+    .notice-item {
+      font-size: 13px;
+      color: #78350f;
+      padding: 4px 0;
+      border-top: 1px dashed rgba(217, 119, 6, 0.25);
+    }
+    .notice-item:first-of-type { border-top: none; }
+    .notice-date { font-size: 11px; color: #b45309; font-weight: 600; margin-right: 6px; }
+
+    .control-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+
+    .pill-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .pill-bar:last-child { margin-bottom: 0; }
+
+    .pill-btn {
+      padding: 6px 11px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .pill-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .subj-btn.active {
+      background: linear-gradient(135deg, #0d9488, #2a9d8f);
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .type-btn.active {
+      background: linear-gradient(135deg, #334155, #475569);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+    .subject-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0f766e;
+      background: #ccfbf1;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .type-badge {
+      font-size: 10px;
+      font-weight: 600;
+      color: #1e40af;
+      background: #dbeafe;
+      padding: 3px 7px;
+      border-radius: 6px;
+    }
+
+    .card h3 { margin: 6px 0 2px; font-size: 15px; line-height: 1.35; }
+    .card p { margin: 0; font-size: 12px; color: var(--muted); }
+
+    .open-btn {
+      padding: 9px 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .viewer-box {
+      display: none;
+      margin-top: 14px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .viewer-header {
+      background: linear-gradient(135deg, #0b3948, #135d66);
+      color: #ffffff;
+      padding: 9px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .viewer-header button {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .viewer-status { padding: 20px; text-align: center; color: var(--muted); font-size: 13px; display: none; }
+    .viewer-box iframe { width: 100%; height: 65vh; min-height: 320px; border: none; }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11, 37, 69, 0.94), rgba(19, 78, 94, 0.94));
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 16px 12px;
+      z-index: 9999;
+      overflow-y: auto;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 12px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 9px;
+    }
+
+    .auth-tab {
+      padding: 8px;
+      border: none;
+      background: transparent;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .auth-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(15, 76, 92, 0.12);
+    }
+
+    .modal-card h2 { margin: 0 0 4px; font-size: 18px; color: var(--primary); }
+    .modal-card p.sub { margin: 0 0 12px; font-size: 12px; color: var(--muted); }
+    .field { margin-bottom: 10px; }
+    .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+    .field input {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+    .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.15); }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 2px 0;
+      text-decoration: underline;
+    }
+
+    .check-grid { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+    .check-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 9px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font-size: 12px;
+      background: #f8fafc;
+      cursor: pointer;
+    }
+    .check-chip:has(input:checked) {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .check-chip input { width: auto; margin: 0; accent-color: var(--accent); }
+
+    .submit-btn {
+      width: 100%;
+      padding: 11px;
+      border: none;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .msg { margin-top: 8px; font-size: 12px; color: #dc2626; min-height: 16px; }
+    .msg.ok { color: #0f766e; font-weight: 600; }
+
+    .empty-note {
+      grid-column: 1 / -1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px 14px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      background: #0b3948;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      padding: 10px 12px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 600px) {
+      .modal-backdrop { padding: 8px; }
+      .modal-card { padding: 14px; }
+      .search-wrap { max-width: 100%; }
+      .grid { grid-template-columns: 1fr; }
+      .viewer-box iframe { height: 58vh; min-height: 280px; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+
+  <!-- AUTH MODAL -->
+  <div id="auth-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="auth-tabs" id="authTabs">
+        <button type="button" class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+        <button type="button" class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">New Signup</button>
+      </div>
+
+      <form id="loginBox" onsubmit="event.preventDefault(); submitLogin();">
+        <h2>Portal Login</h2>
+        <p class="sub">Sign in using your registered Email and Password.</p>
+        <div class="field">
+          <label>Email (Login ID) *</label>
+          <input type="email" id="lEmail" placeholder="e.g., rahul@gmail.com" required />
+        </div>
+        <div class="field">
+          <label>Password *</label>
+          <input type="password" id="lPwd" placeholder="Enter your password" required />
+        </div>
+        <div style="text-align:right;margin-bottom:4px;">
+          <button type="button" class="link-btn" onclick="switchAuthTab('forgot')">Forgot Password?</button>
+        </div>
+        <button type="submit" class="submit-btn" id="loginBtn">Login</button>
+        <div class="msg" id="loginMsg"></div>
+      </form>
+
+      <form id="signupBox" style="display:none;" onsubmit="event.preventDefault(); submitSignup();">
+        <h2>New User Signup</h2>
+        <p class="sub">Create your account. Your Email will be your Login ID.</p>
+        <div class="field">
+          <label>Full Name *</label>
+          <input type="text" id="sName" placeholder="e.g., Rahul Sharma" required />
+        </div>
+        <div class="field">
+          <label>Mobile Number (10 digits) *</label>
+          <input type="tel" id="sMobile" maxlength="10" placeholder="e.g., 9876543210" required />
+        </div>
+        <div class="field">
+          <label>Email Address (Login ID) *</label>
+          <input type="email" id="sEmail" placeholder="e.g., rahul@gmail.com" required />
+        </div>
+        <div class="field">
+          <label>Create Password (min 4 characters) *</label>
+          <input type="password" id="sPwd" placeholder="Create a password" required />
+        </div>
+        <button type="submit" class="submit-btn" id="signupBtn">Create Account</button>
+        <div class="msg" id="signupMsg"></div>
+      </form>
+
+      <form id="forgotBox" style="display:none;" onsubmit="event.preventDefault(); submitForgot();">
+        <h2>Reset Password</h2>
+        <p class="sub">Enter your registered Email &amp; Mobile Number to receive a new password.</p>
+        <div class="field">
+          <label>Registered Email *</label>
+          <input type="email" id="fEmail" placeholder="e.g., rahul@gmail.com" required />
+        </div>
+        <div class="field">
+          <label>Registered Mobile Number *</label>
+          <input type="tel" id="fMobile" maxlength="10" placeholder="10-digit mobile number" required />
+        </div>
+        <button type="submit" class="submit-btn" id="forgotBtn">Send New Password</button>
+        <div class="msg" id="forgotMsg"></div>
+        <div style="text-align:center;margin-top:8px;">
+          <button type="button" class="link-btn" onclick="switchAuthTab('login')">Back to Login</button>
+        </div>
+      </form>
+
+      <p style="margin-top:10px;text-align:center;font-size:11px;color:var(--muted);">© 2026 Vikram Singh | 7018501289</p>
+    </div>
+  </div>
+
+  <!-- CLASS & SUBJECT PREFERENCES MODAL -->
+  <div id="pref-modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-card">
+      <h2>Select Your Classes &amp; Subjects</h2>
+      <p class="sub">Choose the classes and subjects you want to view. You can change this anytime.</p>
+      <div class="field">
+        <label>Select Classes *</label>
+        <div class="check-grid" id="classChecks"></div>
+      </div>
+      <div class="field">
+        <label>Select Subjects *</label>
+        <div class="check-grid" id="subjectChecks"></div>
+      </div>
+      <button type="button" class="submit-btn" id="prefBtn" onclick="savePreferences()">Save &amp; Continue</button>
+      <div class="msg" id="prefMsg"></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon">📘</div>
+      <h1>Learning Portal</h1>
+    </div>
+    <div class="header-right">
+      <span class="user-pill" id="userBadge">© Vikram Singh • 7018501289</span>
+      <button type="button" class="hdr-btn edit-btn" id="editPrefBtn" onclick="openPrefModal()">Edit Classes / Subjects</button>
+      <button type="button" class="hdr-btn logout-btn" id="logoutBtn" onclick="logoutUser()">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero-banner">
+      <div>
+        <h2 id="heroGreeting">Explore Interactive Learning</h2>
+        <p id="heroStats">Select a class, subject, and content type below.</p>
+      </div>
+      <div class="search-wrap">
+        <input type="text" id="searchInput" placeholder="Search chapter, quiz, notes..." oninput="renderChapters()" />
+      </div>
+    </div>
+
+    <div class="notice-board" id="noticeBoard">
+      <div class="notice-header">
+        <span>📢 Announcements &amp; Notices</span>
+      </div>
+      <div id="noticeList"></div>
+    </div>
+
+    <div class="control-panel">
+      <p class="section-label">Your Classes</p>
+      <div class="pill-bar" id="classBar"></div>
+
+      <p class="section-label">Subjects</p>
+      <div class="pill-bar" id="subjectBar"></div>
+
+      <p class="section-label">Content Type</p>
+      <div class="pill-bar" id="typeBar"></div>
+    </div>
+
+    <div class="grid" id="chapterGrid"></div>
+
+    <div class="viewer-box" id="viewerBox">
+      <div class="viewer-header">
+        <span id="viewerTitle">Content</span>
+        <button type="button" onclick="closeViewer()">Close</button>
+      </div>
+      <div class="viewer-status" id="viewerStatus">Loading content...</div>
+      <iframe id="simFrame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 <strong>Vikram Singh</strong> (7018501289) | All Rights Reserved
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const SESSION_KEY = 'learning_portal_session_v2';
+
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.addEventListener('copy', e => e.preventDefault());
+      document.addEventListener('keydown', function (e) {
+        const k = e.key ? e.key.toUpperCase() : '';
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(k)) || (e.ctrlKey && ['U', 'S', 'C', 'P'].includes(k))) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      let ALL_CLASSES = ['Class 3','Class 4','Class 5','Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'];
+      let ALL_SUBJECTS = ['Maths','Science','Physics','Chemistry','Biology','English','Hindi','Social Science','EVS','Computer'];
+      let ALL_TYPES = ['Interactive Content','Sample Papers','Notes','Class Test','Judge Your Knowledge','Syllabus','Quiz Portal'];
+
+      let currentUser = null;
+      let activeClass = '';
+      let activeSubject = 'All';
+      let activeType = 'All';
+      let chapters = [];
+      let notifications = [];
+
+      function saveSessionLocally(user) {
+        try {
+          localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+        } catch (e) {}
+      }
+
+      function clearSessionLocally() {
+        try {
+          localStorage.removeItem(SESSION_KEY);
+        } catch (e) {}
+      }
+
+      function renderNotifications() {
+        const board = document.getElementById('noticeBoard');
+        const list = document.getElementById('noticeList');
+        if (!notifications || !notifications.length) {
+          board.style.display = 'none';
+          return;
+        }
+        list.innerHTML = '';
+        notifications.forEach(n => {
+          const div = document.createElement('div');
+          div.className = 'notice-item';
+          div.innerHTML = (n.date ? '<span class="notice-date">[' + n.date + ']</span>' : '') +
+            '<strong>' + n.title + ':</strong> ' + n.message;
+          list.appendChild(div);
+        });
+        board.style.display = 'block';
+      }
+
+      function renderPrefCheckboxes() {
+        const cBox = document.getElementById('classChecks');
+        cBox.innerHTML = '';
+        ALL_CLASSES.forEach(c => {
+          cBox.innerHTML += '<label class="check-chip"><input type="checkbox" name="uClass" value="' + c + '"> ' + c + '</label>';
+        });
+        const sBox = document.getElementById('subjectChecks');
+        sBox.innerHTML = '';
+        ALL_SUBJECTS.forEach(s => {
+          sBox.innerHTML += '<label class="check-chip"><input type="checkbox" name="uSubj" value="' + s + '"> ' + s + '</label>';
+        });
+      }
+
+      window.switchAuthTab = function (tab) {
+        document.getElementById('authTabs').style.display = tab === 'forgot' ? 'none' : 'grid';
+        document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+        document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+        document.getElementById('loginBox').style.display = tab === 'login' ? 'block' : 'none';
+        document.getElementById('signupBox').style.display = tab === 'signup' ? 'block' : 'none';
+        document.getElementById('forgotBox').style.display = tab === 'forgot' ? 'block' : 'none';
+      };
+
+      window.openPrefModal = function () {
+        renderPrefCheckboxes();
+        const userClasses = (currentUser && currentUser.classes) ? currentUser.classes : [];
+        const userSubjects = (currentUser && currentUser.subjects) ? currentUser.subjects : [];
+        document.querySelectorAll('input[name="uClass"]').forEach(el => {
+          el.checked = userClasses.includes(el.value);
+        });
+        document.querySelectorAll('input[name="uSubj"]').forEach(el => {
+          el.checked = userSubjects.includes(el.value);
+        });
+        document.getElementById('prefMsg').textContent = '';
+        document.getElementById('pref-modal').style.display = 'flex';
+        window.scrollTo(0, 0);
+      };
+
+      function applyUserSession(user) {
+        currentUser = user;
+        saveSessionLocally(user);
+        document.getElementById('auth-modal').style.display = 'none';
+        document.getElementById('userBadge').textContent = 'Welcome, ' + user.name;
+        document.getElementById('heroGreeting').textContent = 'Welcome, ' + user.name;
+        document.getElementById('editPrefBtn').style.display = 'inline-block';
+        document.getElementById('logoutBtn').style.display = 'inline-block';
+
+        if (!user.classes || !user.classes.length || !user.subjects || !user.subjects.length) {
+          openPrefModal();
+          return;
+        }
+
+        activeClass = user.classes[0];
+        activeSubject = 'All';
+        activeType = 'All';
+        renderClasses();
+        renderSubjects();
+        renderTypes();
+        renderChapters();
+      }
+
+      window.savePreferences = function () {
+        const classes = Array.from(document.querySelectorAll('input[name="uClass"]:checked')).map(el => el.value);
+        const subjects = Array.from(document.querySelectorAll('input[name="uSubj"]:checked')).map(el => el.value);
+        const msg = document.getElementById('prefMsg');
+        const btn = document.getElementById('prefBtn');
+
+        if (!classes.length || !subjects.length) {
+          msg.textContent = 'Please select at least 1 Class and 1 Subject.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Save & Continue';
+            if (res && res.ok) {
+              currentUser.classes = res.classes;
+              currentUser.subjects = res.subjects;
+              saveSessionLocally(currentUser);
+              document.getElementById('pref-modal').style.display = 'none';
+              if (!currentUser.classes.includes(activeClass)) {
+                activeClass = currentUser.classes[0];
+              }
+              activeSubject = 'All';
+              activeType = 'All';
+              renderClasses();
+              renderSubjects();
+              renderTypes();
+              renderChapters();
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Unable to save preferences.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Save & Continue';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .saveUserPreferences({ email: currentUser.email, classes: classes, subjects: subjects });
+      };
+
+      window.logoutUser = function () {
+        currentUser = null;
+        clearSessionLocally();
+        closeViewer();
+        document.getElementById('pref-modal').style.display = 'none';
+        document.getElementById('auth-modal').style.display = 'flex';
+        document.getElementById('editPrefBtn').style.display = 'none';
+        document.getElementById('logoutBtn').style.display = 'none';
+        document.getElementById('userBadge').textContent = '© Vikram Singh • 7018501289';
+        document.getElementById('lPwd').value = '';
+        switchAuthTab('login');
+        window.scrollTo(0, 0);
+      };
+
+      function renderClasses() {
+        const bar = document.getElementById('classBar');
+        bar.innerHTML = '';
+        const list = (currentUser && currentUser.classes && currentUser.classes.length) ? currentUser.classes : [];
+        list.forEach(cls => {
+          const btn = document.createElement('button');
+          btn.className = 'pill-btn' + (cls === activeClass ? ' active' : '');
+          btn.textContent = cls;
+          btn.onclick = () => {
+            activeClass = cls;
+            activeSubject = 'All';
+            renderClasses();
+            renderSubjects();
+            renderChapters();
+          };
+          bar.appendChild(btn);
+        });
+      }
+
+      function renderSubjects() {
+        const bar = document.getElementById('subjectBar');
+        bar.innerHTML = '';
+        const userSubjs = (currentUser && currentUser.subjects && currentUser.subjects.length) ? currentUser.subjects : [];
+        ['All'].concat(userSubjs).forEach(subj => {
+          const btn = document.createElement('button');
+          btn.className = 'pill-btn subj-btn' + (subj === activeSubject ? ' active' : '');
+          btn.textContent = subj;
+          btn.onclick = () => {
+            activeSubject = subj;
+            renderSubjects();
+            renderChapters();
+          };
+          bar.appendChild(btn);
+        });
+      }
+
+      function renderTypes() {
+        const bar = document.getElementById('typeBar');
+        bar.innerHTML = '';
+        ['All'].concat(ALL_TYPES).forEach(t => {
+          const btn = document.createElement('button');
+          btn.className = 'pill-btn type-btn' + (t === activeType ? ' active' : '');
+          btn.textContent = t;
+          btn.onclick = () => {
+            activeType = t;
+            renderTypes();
+            renderChapters();
+          };
+          bar.appendChild(btn);
+        });
+      }
+
+      window.renderChapters = function () {
+        const grid = document.getElementById('chapterGrid');
+        grid.innerHTML = '';
+        if (!activeClass) return;
+
+        const userSubjsLower = ((currentUser && currentUser.subjects) ? currentUser.subjects : []).map(s => s.toLowerCase());
+        const query = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+
+        const filtered = chapters.filter(c => {
+          const clsLower = c.cls.toLowerCase();
+          const subjLower = c.subject.toLowerCase();
+
+          // Common content support: "All" in Class or Subject shows to everyone
+          const matchClass = clsLower === 'all' || clsLower === activeClass.toLowerCase();
+          const allowedSubj = subjLower === 'all' || userSubjsLower.includes(subjLower);
+          const matchSubj = activeSubject === 'All' ? allowedSubj : (subjLower === 'all' || subjLower === activeSubject.toLowerCase());
+          const matchType = activeType === 'All' || c.type.toLowerCase() === activeType.toLowerCase();
+          const matchQuery = !query || c.chapter.toLowerCase().includes(query) || subjLower.includes(query) || c.type.toLowerCase().includes(query);
+          return matchClass && matchSubj && matchType && matchQuery;
+        });
+
+        document.getElementById('heroStats').textContent =
+          'Showing ' + filtered.length + ' item(s) in ' + activeClass + ' • ' + activeSubject + ' • ' + activeType;
+
+        if (!filtered.length) {
+          grid.innerHTML =
+            '<div class="empty-note">No content available for <b>' + activeClass + ' (' + activeSubject + ' • ' + activeType + ')</b> yet.</div>';
+          return;
+        }
+
+        filtered.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          const clsLabel = item.cls.toLowerCase() === 'all' ? 'All Classes' : item.cls;
+          const subjLabel = item.subject.toLowerCase() === 'all' ? 'Common' : item.subject;
+          card.innerHTML =
+            '<div>' +
+            '<div class="card-top"><span class="subject-tag">' + subjLabel + '</span><span class="type-badge">' + item.type + '</span></div>' +
+            '<h3>' + item.chapter + '</h3>' +
+            '<p>' + clsLabel + '</p>' +
+            '</div>' +
+            '<button class="open-btn">Open Content</button>';
+          card.querySelector('button').onclick = () => openViewer(item.chapter, item.target);
+          grid.appendChild(card);
+        });
+      };
+
+      window.openViewer = function (title, target) {
+        const box = document.getElementById('viewerBox');
+        const status = document.getElementById('viewerStatus');
+        const frame = document.getElementById('simFrame');
+
+        document.getElementById('viewerTitle').textContent = activeClass + ' • ' + title;
+        frame.style.display = 'none';
+        frame.removeAttribute('src');
+        frame.removeAttribute('srcdoc');
+        status.style.display = 'block';
+        status.textContent = 'Loading content...';
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            if (res && res.ok && res.mode === 'html') {
+              status.style.display = 'none';
+              frame.style.display = 'block';
+              frame.srcdoc = res.html;
+            } else if (res && res.ok && res.mode === 'url') {
+              status.style.display = 'none';
+              frame.style.display = 'block';
+              frame.src = res.url;
+            } else {
+              status.textContent = (res && res.message) ? res.message : 'Unable to load content.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            status.textContent = 'Error: ' + err.message;
+          })
+          .getContentPayload(target);
+      };
+
+      window.closeViewer = function () {
+        const frame = document.getElementById('simFrame');
+        frame.removeAttribute('src');
+        frame.removeAttribute('srcdoc');
+        document.getElementById('viewerBox').style.display = 'none';
+      };
+
+      window.submitLogin = function () {
+        const email = document.getElementById('lEmail').value.trim();
+        const password = document.getElementById('lPwd').value.trim();
+        const msg = document.getElementById('loginMsg');
+        const btn = document.getElementById('loginBtn');
+
+        if (!email || !password) {
+          msg.textContent = 'Please enter both Email and Password.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Signing in...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Login';
+            if (res && res.ok && res.user) {
+              applyUserSession(res.user);
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Login failed.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Login';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .loginStudent({ email: email, password: password });
+      };
+
+      window.submitSignup = function () {
+        const name = document.getElementById('sName').value.trim();
+        const mobile = document.getElementById('sMobile').value.trim();
+        const email = document.getElementById('sEmail').value.trim();
+        const password = document.getElementById('sPwd').value.trim();
+        const msg = document.getElementById('signupMsg');
+        const btn = document.getElementById('signupBtn');
+
+        if (!name || !/^[6-9]\d{9}$/.test(mobile) || !email.includes('@')) {
+          msg.textContent = 'Please enter a valid Name, 10-digit Mobile Number, and Email.';
+          return;
+        }
+        if (password.length < 4) {
+          msg.textContent = 'Password must be at least 4 characters.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Creating Account...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Create Account';
+            if (res && res.ok && res.user) {
+              applyUserSession(res.user);
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Signup failed.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Create Account';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .registerStudent({ name: name, mobile: mobile, email: email, password: password });
+      };
+
+      window.submitForgot = function () {
+        const email = document.getElementById('fEmail').value.trim();
+        const mobile = document.getElementById('fMobile').value.trim();
+        const msg = document.getElementById('forgotMsg');
+        const btn = document.getElementById('forgotBtn');
+
+        msg.className = 'msg';
+        if (!email.includes('@') || !/^[6-9]\d{9}$/.test(mobile)) {
+          msg.textContent = 'Please enter your registered Email and 10-digit Mobile Number.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Send New Password';
+            if (res && res.ok) {
+              msg.className = 'msg ok';
+              msg.textContent = res.message;
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Unable to reset password.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Send New Password';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .resetPassword({ email: email, mobile: mobile });
+      };
+
+      renderPrefCheckboxes();
+
+      // Auto-restore session on page refresh
+      try {
+        const savedRaw = localStorage.getItem(SESSION_KEY);
+        if (savedRaw) {
+          const savedUser = JSON.parse(savedRaw);
+          if (savedUser && savedUser.email) {
+            applyUserSession(savedUser);
+          }
+        }
+      } catch (e) {}
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function (ctx) {
+            if (ctx && ctx.settings) {
+              ALL_CLASSES = ctx.settings.classes || ALL_CLASSES;
+              ALL_SUBJECTS = ctx.settings.subjects || ALL_SUBJECTS;
+              ALL_TYPES = ctx.settings.types || ALL_TYPES;
+            }
+            chapters = (ctx && ctx.chapters) ? ctx.chapters : [];
+            notifications = (ctx && ctx.notifications) ? ctx.notifications : [];
+            renderPrefCheckboxes();
+            renderNotifications();
+            if (currentUser && activeClass) {
+              renderTypes();
+              renderChapters();
+            }
+          })
+          .getPortalContext();
+      }
+    })();
+  </script>
+</body>
+</html>
