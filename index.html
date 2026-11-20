@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 3–12 Learning Portal | © Vikram Singh (7018501289)</title>
+  <title>Class 3–12 Learning Portal</title>
+  <meta name="copyright" content="© 2026 Vikram Singh | 7018501289. All Rights Reserved.">
   <style>
     :root {
       --primary: #0f4c5c;
@@ -73,6 +74,7 @@
     }
 
     header h1 { margin: 0; font-size: 16px; font-weight: 600; }
+
     .header-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 
     .user-pill {
@@ -134,6 +136,7 @@
       outline: none;
     }
 
+    /* Notice / Notification Board */
     .notice-board {
       display: none;
       background: #fffbeb;
@@ -144,8 +147,21 @@
       margin-bottom: 12px;
       box-shadow: var(--shadow);
     }
-    .notice-header { font-size: 12px; font-weight: 700; color: #92400e; margin-bottom: 6px; }
-    .notice-item { font-size: 13px; color: #78350f; padding: 4px 0; border-top: 1px dashed rgba(217, 119, 6, 0.25); }
+    .notice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+    .notice-item {
+      font-size: 13px;
+      color: #78350f;
+      padding: 4px 0;
+      border-top: 1px dashed rgba(217, 119, 6, 0.25);
+    }
     .notice-item:first-of-type { border-top: none; }
     .notice-date { font-size: 11px; color: #b45309; font-weight: 600; margin-right: 6px; }
 
@@ -181,9 +197,21 @@
       cursor: pointer;
     }
 
-    .pill-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #ffffff; border-color: transparent; }
-    .subj-btn.active { background: linear-gradient(135deg, #0d9488, #2a9d8f); color: #ffffff; border-color: transparent; }
-    .type-btn.active { background: linear-gradient(135deg, #334155, #475569); color: #ffffff; border-color: transparent; }
+    .pill-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .subj-btn.active {
+      background: linear-gradient(135deg, #0d9488, #2a9d8f);
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .type-btn.active {
+      background: linear-gradient(135deg, #334155, #475569);
+      color: #ffffff;
+      border-color: transparent;
+    }
 
     .grid {
       display: grid;
@@ -204,8 +232,26 @@
     }
 
     .card-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; }
-    .subject-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #0f766e; background: #ccfbf1; padding: 3px 8px; border-radius: 999px; }
-    .type-badge { font-size: 10px; font-weight: 600; color: #1e40af; background: #dbeafe; padding: 3px 7px; border-radius: 6px; }
+
+    .subject-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0f766e;
+      background: #ccfbf1;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .type-badge {
+      font-size: 10px;
+      font-weight: 600;
+      color: #1e40af;
+      background: #dbeafe;
+      padding: 3px 7px;
+      border-radius: 6px;
+    }
+
     .card h3 { margin: 6px 0 2px; font-size: 15px; line-height: 1.35; }
     .card p { margin: 0; font-size: 12px; color: var(--muted); }
 
@@ -313,7 +359,11 @@
       color: var(--muted);
     }
 
-    .auth-tab.active { background: #ffffff; color: var(--primary); box-shadow: 0 2px 6px rgba(15, 76, 92, 0.12); }
+    .auth-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(15, 76, 92, 0.12);
+    }
 
     .modal-card h2 { margin: 0 0 4px; font-size: 18px; color: var(--primary); }
     .modal-card p.sub { margin: 0 0 12px; font-size: 12px; color: var(--muted); }
@@ -352,7 +402,12 @@
       background: #f8fafc;
       cursor: pointer;
     }
-    .check-chip:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); color: var(--primary); font-weight: 600; }
+    .check-chip:has(input:checked) {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--primary);
+      font-weight: 600;
+    }
     .check-chip input { width: auto; margin: 0; accent-color: var(--accent); }
 
     .submit-btn {
@@ -383,7 +438,7 @@
       box-shadow: var(--shadow);
     }
 
-footer {
+    footer {
       background: #0b3948;
       color: rgba(255, 255, 255, 0.9);
       text-align: center;
@@ -401,7 +456,7 @@ footer {
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
 
-<!-- AUTH MODAL -->
+  <!-- AUTH MODAL -->
   <div id="auth-modal" class="modal-backdrop">
     <div class="modal-card">
       <div class="auth-tabs" id="authTabs">
@@ -468,7 +523,7 @@ footer {
         </div>
       </form>
 
-      <p style="margin-top:10px;text-align:center;font-size:11px;color:var(--muted);">© 2026 Vikram Singh | 7018501289</p>
+      <p style="margin-top:10px;text-align:center;font-size:11px;color:var(--muted);">© 2026 All Rights Reserved • <button type="button" class="link-btn" style="font-size:11px;" onclick="openCopyrightModal()">Copyright Info</button></p>
     </div>
   </div>
 
@@ -490,13 +545,27 @@ footer {
     </div>
   </div>
 
+  <!-- COPYRIGHT DETAILS MODAL (Shown only when user clicks) -->
+  <div id="copyright-modal" class="modal-backdrop" style="display:none;z-index:99999;" onclick="if(event.target===this)this.style.display='none';">
+    <div class="modal-card" style="max-width:360px;text-align:center;">
+      <h2>Copyright Information</h2>
+      <p class="sub" style="margin-bottom:10px;">All content, materials, and simulations on this portal are copyright protected.</p>
+      <div style="background:#f1f5f9;border-radius:10px;padding:12px;font-size:13px;color:var(--text);margin-bottom:12px;">
+        <strong>© 2026 Vikram Singh</strong><br/>
+        Contact: <strong>7018501289</strong><br/>
+        All Rights Reserved.
+      </div>
+      <button type="button" class="submit-btn" onclick="document.getElementById('copyright-modal').style.display='none';">Close</button>
+    </div>
+  </div>
+
   <header>
     <div class="brand">
       <div class="brand-icon">📘</div>
       <h1>Learning Portal</h1>
     </div>
     <div class="header-right">
-      <span class="user-pill" id="userBadge">© Vikram Singh • 7018501289</span>
+      <span class="user-pill" id="userBadge">Learning Portal</span>
       <button type="button" class="hdr-btn edit-btn" id="editPrefBtn" onclick="openPrefModal()">Edit Classes / Subjects</button>
       <button type="button" class="hdr-btn logout-btn" id="logoutBtn" onclick="logoutUser()">Logout</button>
     </div>
@@ -514,7 +583,9 @@ footer {
     </div>
 
     <div class="notice-board" id="noticeBoard">
-      <div class="notice-header">📢 Announcements &amp; Notices</div>
+      <div class="notice-header">
+        <span>📢 Announcements &amp; Notices</span>
+      </div>
       <div id="noticeList"></div>
     </div>
 
@@ -542,23 +613,23 @@ footer {
   </main>
 
   <footer>
-    © 2026 <strong>VS</strong> Copyrights | All Rights Reserved
+    © 2026 Learning Portal | All Rights Reserved • <button type="button" onclick="openCopyrightModal()" style="background:none;border:none;color:#99f6e4;text-decoration:underline;cursor:pointer;font-size:11px;padding:0;">Copyright Details</button>
   </footer>
 
   <script>
     (function () {
       'use strict';
 
-      // =====================================================================
-      // APNA APPS SCRIPT WEB APP URL YAHAN PASTE KAREIN:
-      // =====================================================================
-      const APPS_SCRIPT_API_URL = 'https://script.google.com/macros/s/AKfycbyhSHCHx6n2SQkwUxfHMQ-QudW-c09n4PC51kw5CpLEy9Y8AsRESU1sRi0VSiGmtOfz/exec';
+      const SESSION_KEY = 'learning_portal_session_v2';
+      const SESSION_MAX_MS = 60 * 60 * 1000; // 1 hour auto-logout
+      let sessionTimer = null;
 
-      const SESSION_KEY = 'learning_portal_session_v3';
+      window.openCopyrightModal = function () {
+        document.getElementById('copyright-modal').style.display = 'flex';
+      };
 
-      // Silent background protection
-      document.addEventListener('contextmenu', function (e) { e.preventDefault(); return false; });
-      document.addEventListener('copy', function (e) { e.preventDefault(); return false; });
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.addEventListener('copy', e => e.preventDefault());
       document.addEventListener('keydown', function (e) {
         const k = e.key ? e.key.toUpperCase() : '';
         if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(k)) || (e.ctrlKey && ['U', 'S', 'C', 'P'].includes(k))) {
@@ -566,31 +637,6 @@ footer {
           return false;
         }
       });
-
-      const CTX_CACHE_KEY = 'learning_portal_ctx_v1';
-      const contentCache = {};
-
-      async function apiCall(action, data) {
-        const controller = new AbortController();
-        const timer = setTimeout(function () { controller.abort(); }, 15000);
-        try {
-          const url = APPS_SCRIPT_API_URL + '?action=' + encodeURIComponent(action) + '&data=' + encodeURIComponent(JSON.stringify(data || {}));
-          const resp = await fetch(url, { method: 'GET', redirect: 'follow', signal: controller.signal });
-          clearTimeout(timer);
-          const text = await resp.text();
-          try {
-            return JSON.parse(text);
-          } catch (e) {
-            throw new Error('Backend did not return JSON. Please redeploy Unified_SmartClass_Code.gs as New version.');
-          }
-        } catch (err) {
-          clearTimeout(timer);
-          if (err.name === 'AbortError') {
-            throw new Error('Server timeout (15s). Please try again.');
-          }
-          throw err;
-        }
-      }
 
       let ALL_CLASSES = ['Class 3','Class 4','Class 5','Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'];
       let ALL_SUBJECTS = ['Maths','Science','Physics','Chemistry','Biology','English','Hindi','Social Science','EVS','Computer'];
@@ -604,21 +650,44 @@ footer {
       let notifications = [];
 
       function saveSessionLocally(user) {
-        try { localStorage.setItem(SESSION_KEY, JSON.stringify(user)); } catch (e) {}
+        try {
+          if (!user.loginAt) user.loginAt = Date.now();
+          localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+        } catch (e) {}
       }
+
+      function isSessionExpired(user) {
+        return !user || !user.loginAt || (Date.now() - user.loginAt >= SESSION_MAX_MS);
+      }
+
+      function startSessionExpiryWatcher() {
+        if (sessionTimer) clearInterval(sessionTimer);
+        sessionTimer = setInterval(function () {
+          if (currentUser && isSessionExpired(currentUser)) {
+            logoutUser('Session expired after 1 hour. Please login again.');
+          }
+        }, 15000);
+      }
+
       function clearSessionLocally() {
-        try { localStorage.removeItem(SESSION_KEY); } catch (e) {}
+        try {
+          localStorage.removeItem(SESSION_KEY);
+        } catch (e) {}
       }
 
       function renderNotifications() {
         const board = document.getElementById('noticeBoard');
         const list = document.getElementById('noticeList');
-        if (!notifications || !notifications.length) { board.style.display = 'none'; return; }
+        if (!notifications || !notifications.length) {
+          board.style.display = 'none';
+          return;
+        }
         list.innerHTML = '';
         notifications.forEach(n => {
           const div = document.createElement('div');
           div.className = 'notice-item';
-          div.innerHTML = (n.date ? '<span class="notice-date">[' + n.date + ']</span>' : '') + '<strong>' + n.title + ':</strong> ' + n.message;
+          div.innerHTML = (n.date ? '<span class="notice-date">[' + n.date + ']</span>' : '') +
+            '<strong>' + n.title + ':</strong> ' + n.message;
           list.appendChild(div);
         });
         board.style.display = 'block';
@@ -627,10 +696,14 @@ footer {
       function renderPrefCheckboxes() {
         const cBox = document.getElementById('classChecks');
         cBox.innerHTML = '';
-        ALL_CLASSES.forEach(c => { cBox.innerHTML += '<label class="check-chip"><input type="checkbox" name="uClass" value="' + c + '"> ' + c + '</label>'; });
+        ALL_CLASSES.forEach(c => {
+          cBox.innerHTML += '<label class="check-chip"><input type="checkbox" name="uClass" value="' + c + '"> ' + c + '</label>';
+        });
         const sBox = document.getElementById('subjectChecks');
         sBox.innerHTML = '';
-        ALL_SUBJECTS.forEach(s => { sBox.innerHTML += '<label class="check-chip"><input type="checkbox" name="uSubj" value="' + s + '"> ' + s + '</label>'; });
+        ALL_SUBJECTS.forEach(s => {
+          sBox.innerHTML += '<label class="check-chip"><input type="checkbox" name="uSubj" value="' + s + '"> ' + s + '</label>';
+        });
       }
 
       window.switchAuthTab = function (tab) {
@@ -646,16 +719,22 @@ footer {
         renderPrefCheckboxes();
         const userClasses = (currentUser && currentUser.classes) ? currentUser.classes : [];
         const userSubjects = (currentUser && currentUser.subjects) ? currentUser.subjects : [];
-        document.querySelectorAll('input[name="uClass"]').forEach(el => { el.checked = userClasses.includes(el.value); });
-        document.querySelectorAll('input[name="uSubj"]').forEach(el => { el.checked = userSubjects.includes(el.value); });
+        document.querySelectorAll('input[name="uClass"]').forEach(el => {
+          el.checked = userClasses.includes(el.value);
+        });
+        document.querySelectorAll('input[name="uSubj"]').forEach(el => {
+          el.checked = userSubjects.includes(el.value);
+        });
         document.getElementById('prefMsg').textContent = '';
         document.getElementById('pref-modal').style.display = 'flex';
+        if (reasonMsg) { document.getElementById('loginMsg').textContent = reasonMsg; }
         window.scrollTo(0, 0);
       };
 
       function applyUserSession(user) {
         currentUser = user;
         saveSessionLocally(user);
+        startSessionExpiryWatcher();
         document.getElementById('auth-modal').style.display = 'none';
         document.getElementById('userBadge').textContent = 'Welcome, ' + user.name;
         document.getElementById('heroGreeting').textContent = 'Welcome, ' + user.name;
@@ -666,6 +745,7 @@ footer {
           openPrefModal();
           return;
         }
+
         activeClass = user.classes[0];
         activeSubject = 'All';
         activeType = 'All';
@@ -675,34 +755,53 @@ footer {
         renderChapters();
       }
 
-      window.savePreferences = async function () {
+      window.savePreferences = function () {
         const classes = Array.from(document.querySelectorAll('input[name="uClass"]:checked')).map(el => el.value);
         const subjects = Array.from(document.querySelectorAll('input[name="uSubj"]:checked')).map(el => el.value);
         const msg = document.getElementById('prefMsg');
         const btn = document.getElementById('prefBtn');
-        if (!classes.length || !subjects.length) { msg.textContent = 'Please select at least 1 Class and 1 Subject.'; return; }
 
-        btn.disabled = true; btn.textContent = 'Saving...'; msg.textContent = '';
-        try {
-          const res = await apiCall('savePrefs', { email: currentUser.email, classes: classes, subjects: subjects });
-          if (res && res.ok) {
-            currentUser.classes = res.classes;
-            currentUser.subjects = res.subjects;
-            saveSessionLocally(currentUser);
-            document.getElementById('pref-modal').style.display = 'none';
-            if (!currentUser.classes.includes(activeClass)) activeClass = currentUser.classes[0];
-            activeSubject = 'All'; activeType = 'All';
-            renderClasses(); renderSubjects(); renderTypes(); renderChapters();
-          } else {
-            msg.textContent = (res && res.message) ? res.message : 'Unable to save preferences.';
-          }
-        } catch (err) {
-          msg.textContent = 'Network Error: ' + err.message;
+        if (!classes.length || !subjects.length) {
+          msg.textContent = 'Please select at least 1 Class and 1 Subject.';
+          return;
         }
-        btn.disabled = false; btn.textContent = 'Save & Continue';
+
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Save & Continue';
+            if (res && res.ok) {
+              currentUser.classes = res.classes;
+              currentUser.subjects = res.subjects;
+              saveSessionLocally(currentUser);
+              document.getElementById('pref-modal').style.display = 'none';
+              if (!currentUser.classes.includes(activeClass)) {
+                activeClass = currentUser.classes[0];
+              }
+              activeSubject = 'All';
+              activeType = 'All';
+              renderClasses();
+              renderSubjects();
+              renderTypes();
+              renderChapters();
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Unable to save preferences.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Save & Continue';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .saveUserPreferences({ email: currentUser.email, classes: classes, subjects: subjects });
       };
 
-      window.logoutUser = function () {
+      window.logoutUser = function (reasonMsg) {
+        if (sessionTimer) { clearInterval(sessionTimer); sessionTimer = null; }
         currentUser = null;
         clearSessionLocally();
         closeViewer();
@@ -710,20 +809,28 @@ footer {
         document.getElementById('auth-modal').style.display = 'flex';
         document.getElementById('editPrefBtn').style.display = 'none';
         document.getElementById('logoutBtn').style.display = 'none';
-        document.getElementById('userBadge').textContent = '© Vikram Singh • 7018501289';
+        document.getElementById('userBadge').textContent = 'Learning Portal';
         document.getElementById('lPwd').value = '';
         switchAuthTab('login');
+        if (reasonMsg) { document.getElementById('loginMsg').textContent = reasonMsg; }
         window.scrollTo(0, 0);
       };
 
       function renderClasses() {
         const bar = document.getElementById('classBar');
         bar.innerHTML = '';
-        ((currentUser && currentUser.classes) ? currentUser.classes : []).forEach(cls => {
+        const list = (currentUser && currentUser.classes && currentUser.classes.length) ? currentUser.classes : [];
+        list.forEach(cls => {
           const btn = document.createElement('button');
           btn.className = 'pill-btn' + (cls === activeClass ? ' active' : '');
           btn.textContent = cls;
-          btn.onclick = () => { activeClass = cls; activeSubject = 'All'; renderClasses(); renderSubjects(); renderChapters(); };
+          btn.onclick = () => {
+            activeClass = cls;
+            activeSubject = 'All';
+            renderClasses();
+            renderSubjects();
+            renderChapters();
+          };
           bar.appendChild(btn);
         });
       }
@@ -731,12 +838,16 @@ footer {
       function renderSubjects() {
         const bar = document.getElementById('subjectBar');
         bar.innerHTML = '';
-        const userSubjs = (currentUser && currentUser.subjects) ? currentUser.subjects : [];
+        const userSubjs = (currentUser && currentUser.subjects && currentUser.subjects.length) ? currentUser.subjects : [];
         ['All'].concat(userSubjs).forEach(subj => {
           const btn = document.createElement('button');
           btn.className = 'pill-btn subj-btn' + (subj === activeSubject ? ' active' : '');
           btn.textContent = subj;
-          btn.onclick = () => { activeSubject = subj; renderSubjects(); renderChapters(); };
+          btn.onclick = () => {
+            activeSubject = subj;
+            renderSubjects();
+            renderChapters();
+          };
           bar.appendChild(btn);
         });
       }
@@ -748,7 +859,11 @@ footer {
           const btn = document.createElement('button');
           btn.className = 'pill-btn type-btn' + (t === activeType ? ' active' : '');
           btn.textContent = t;
-          btn.onclick = () => { activeType = t; renderTypes(); renderChapters(); };
+          btn.onclick = () => {
+            activeType = t;
+            renderTypes();
+            renderChapters();
+          };
           bar.appendChild(btn);
         });
       }
@@ -764,6 +879,8 @@ footer {
         const filtered = chapters.filter(c => {
           const clsLower = c.cls.toLowerCase();
           const subjLower = c.subject.toLowerCase();
+
+          // Common content support: "All" in Class or Subject shows to everyone
           const matchClass = clsLower === 'all' || clsLower === activeClass.toLowerCase();
           const allowedSubj = subjLower === 'all' || userSubjsLower.includes(subjLower);
           const matchSubj = activeSubject === 'All' ? allowedSubj : (subjLower === 'all' || subjLower === activeSubject.toLowerCase());
@@ -772,9 +889,12 @@ footer {
           return matchClass && matchSubj && matchType && matchQuery;
         });
 
-        document.getElementById('heroStats').textContent = 'Showing ' + filtered.length + ' item(s) in ' + activeClass + ' • ' + activeSubject + ' • ' + activeType;
+        document.getElementById('heroStats').textContent =
+          'Showing ' + filtered.length + ' item(s) in ' + activeClass + ' • ' + activeSubject + ' • ' + activeType;
+
         if (!filtered.length) {
-          grid.innerHTML = '<div class="empty-note">No content available for <b>' + activeClass + ' (' + activeSubject + ' • ' + activeType + ')</b> yet.</div>';
+          grid.innerHTML =
+            '<div class="empty-note">No content available for <b>' + activeClass + ' (' + activeSubject + ' • ' + activeType + ')</b> yet.</div>';
           return;
         }
 
@@ -784,21 +904,23 @@ footer {
           const clsLabel = item.cls.toLowerCase() === 'all' ? 'All Classes' : item.cls;
           const subjLabel = item.subject.toLowerCase() === 'all' ? 'Common' : item.subject;
           card.innerHTML =
-            '<div><div class="card-top"><span class="subject-tag">' + subjLabel + '</span><span class="type-badge">' + item.type + '</span></div>' +
-            '<h3>' + item.chapter + '</h3><p>' + clsLabel + '</p></div><button class="open-btn">Open Content</button>';
+            '<div>' +
+            '<div class="card-top"><span class="subject-tag">' + subjLabel + '</span><span class="type-badge">' + item.type + '</span></div>' +
+            '<h3>' + item.chapter + '</h3>' +
+            '<p>' + clsLabel + '</p>' +
+            '</div>' +
+            '<button class="open-btn">Open Content</button>';
           card.querySelector('button').onclick = () => openViewer(item.chapter, item.target);
           grid.appendChild(card);
         });
       };
 
-      window.openViewer = async function (title, target) {
+      window.openViewer = function (title, target) {
         const box = document.getElementById('viewerBox');
         const status = document.getElementById('viewerStatus');
         const frame = document.getElementById('simFrame');
 
-                var tabBtn = document.getElementById('openNewTabBtn');
-        tabBtn.style.display = 'none';
-        frame.style.display = 'none';
+                frame.style.display = 'none';
         frame.removeAttribute('src');
         frame.removeAttribute('srcdoc');
         status.style.display = 'flex';
@@ -807,25 +929,24 @@ footer {
         try { history.pushState({ viewerOpen: true }, '', '#content'); } catch (e) {}
         document.body.style.overflow = 'hidden';
 
-        try {
-          const res = contentCache[target] || await apiCall('getContent', { target: target });
-          if (res && res.ok) contentCache[target] = res;
-          if (res && res.ok && res.mode === 'html') {
-            status.style.display = 'none';
-            frame.style.display = 'block';
-            frame.srcdoc = res.html;
-          } else if (res && res.ok && res.mode === 'url') {
-            status.style.display = 'none';
-            frame.style.display = 'block';
-            frame.src = res.url;
-            tabBtn.href = res.url;
-            tabBtn.style.display = 'inline-block';
-          } else {
-            status.textContent = (res && res.message) ? res.message : 'Unable to load content.';
-          }
-        } catch (err) {
-          status.textContent = 'Network Error: ' + err.message;
-        }
+        google.script.run
+          .withSuccessHandler(function (res) {
+            if (res && res.ok && res.mode === 'html') {
+              status.style.display = 'none';
+              frame.style.display = 'block';
+              frame.srcdoc = res.html;
+            } else if (res && res.ok && res.mode === 'url') {
+              status.style.display = 'none';
+              frame.style.display = 'block';
+              frame.src = res.url;
+            } else {
+              status.textContent = (res && res.message) ? res.message : 'Unable to load content.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            status.textContent = 'Error: ' + err.message;
+          })
+          .getContentPayload(target);
       };
 
       window.addEventListener('popstate', function () {
@@ -843,110 +964,147 @@ footer {
         if (!fromPop && location.hash === '#content') { try { history.back(); } catch (e) {} }
       };
 
-      window.submitLogin = async function () {
+      window.submitLogin = function () {
         const email = document.getElementById('lEmail').value.trim();
         const password = document.getElementById('lPwd').value.trim();
         const msg = document.getElementById('loginMsg');
         const btn = document.getElementById('loginBtn');
-        if (!email || !password) { msg.textContent = 'Please enter both Email and Password.'; return; }
 
-        btn.disabled = true; btn.textContent = 'Signing in...'; msg.textContent = '';
-        try {
-          const res = await apiCall('login', { email: email, password: password });
-          if (res && res.ok && res.user) applyUserSession(res.user);
-          else msg.textContent = (res && res.message) ? res.message : 'Login failed.';
-        } catch (err) {
-          msg.textContent = 'Network Error: ' + err.message;
+        if (!email || !password) {
+          msg.textContent = 'Please enter both Email and Password.';
+          return;
         }
-        btn.disabled = false; btn.textContent = 'Login';
+
+        btn.disabled = true;
+        btn.textContent = 'Signing in...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Login';
+            if (res && res.ok && res.user) {
+              applyUserSession(res.user);
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Login failed.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Login';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .loginStudent({ email: email, password: password });
       };
 
-      window.submitSignup = async function () {
+      window.submitSignup = function () {
         const name = document.getElementById('sName').value.trim();
         const mobile = document.getElementById('sMobile').value.trim();
         const email = document.getElementById('sEmail').value.trim();
         const password = document.getElementById('sPwd').value.trim();
         const msg = document.getElementById('signupMsg');
         const btn = document.getElementById('signupBtn');
-        if (!name || !/^[6-9]\d{9}$/.test(mobile) || !email.includes('@')) { msg.textContent = 'Please enter a valid Name, 10-digit Mobile Number, and Email.'; return; }
-        if (password.length < 4) { msg.textContent = 'Password must be at least 4 characters.'; return; }
 
-        btn.disabled = true; btn.textContent = 'Creating Account...'; msg.textContent = '';
-        try {
-          const res = await apiCall('signup', { name: name, mobile: mobile, email: email, password: password });
-          if (res && res.ok && res.user) applyUserSession(res.user);
-          else msg.textContent = (res && res.message) ? res.message : 'Signup failed.';
-        } catch (err) {
-          msg.textContent = 'Network Error: ' + err.message;
+        if (!name || !/^[6-9]\d{9}$/.test(mobile) || !email.includes('@')) {
+          msg.textContent = 'Please enter a valid Name, 10-digit Mobile Number, and Email.';
+          return;
         }
-        btn.disabled = false; btn.textContent = 'Create Account';
+        if (password.length < 4) {
+          msg.textContent = 'Password must be at least 4 characters.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Creating Account...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Create Account';
+            if (res && res.ok && res.user) {
+              applyUserSession(res.user);
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Signup failed.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Create Account';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .registerStudent({ name: name, mobile: mobile, email: email, password: password });
       };
 
-      window.submitForgot = async function () {
+      window.submitForgot = function () {
         const email = document.getElementById('fEmail').value.trim();
         const mobile = document.getElementById('fMobile').value.trim();
         const msg = document.getElementById('forgotMsg');
         const btn = document.getElementById('forgotBtn');
-        msg.className = 'msg';
-        if (!email.includes('@') || !/^[6-9]\d{9}$/.test(mobile)) { msg.textContent = 'Please enter your registered Email and 10-digit Mobile Number.'; return; }
 
-        btn.disabled = true; btn.textContent = 'Sending...'; msg.textContent = '';
-        try {
-          const res = await apiCall('forgot', { email: email, mobile: mobile });
-          if (res && res.ok) { msg.className = 'msg ok'; msg.textContent = res.message; }
-          else msg.textContent = (res && res.message) ? res.message : 'Unable to reset password.';
-        } catch (err) {
-          msg.textContent = 'Network Error: ' + err.message;
+        msg.className = 'msg';
+        if (!email.includes('@') || !/^[6-9]\d{9}$/.test(mobile)) {
+          msg.textContent = 'Please enter your registered Email and 10-digit Mobile Number.';
+          return;
         }
-        btn.disabled = false; btn.textContent = 'Send New Password';
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        msg.textContent = '';
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            btn.disabled = false;
+            btn.textContent = 'Send New Password';
+            if (res && res.ok) {
+              msg.className = 'msg ok';
+              msg.textContent = res.message;
+            } else {
+              msg.textContent = (res && res.message) ? res.message : 'Unable to reset password.';
+            }
+          })
+          .withFailureHandler(function (err) {
+            btn.disabled = false;
+            btn.textContent = 'Send New Password';
+            msg.textContent = 'Error: ' + err.message;
+          })
+          .resetPassword({ email: email, mobile: mobile });
       };
 
       renderPrefCheckboxes();
 
+      // Auto-restore session on page refresh
       try {
         const savedRaw = localStorage.getItem(SESSION_KEY);
         if (savedRaw) {
           const savedUser = JSON.parse(savedRaw);
-          if (savedUser && savedUser.email) applyUserSession(savedUser);
+          if (savedUser && savedUser.email && !isSessionExpired(savedUser)) {
+            applyUserSession(savedUser);
+          } else {
+            clearSessionLocally();
+          }
         }
       } catch (e) {}
 
-      function applyContextData(ctx) {
-        if (!ctx) return;
-        if (ctx.settings) {
-          ALL_CLASSES = ctx.settings.classes || ALL_CLASSES;
-          ALL_SUBJECTS = ctx.settings.subjects || ALL_SUBJECTS;
-          ALL_TYPES = ctx.settings.types || ALL_TYPES;
-        }
-        chapters = ctx.chapters || [];
-        notifications = ctx.notifications || [];
-        renderPrefCheckboxes();
-        renderNotifications();
-        if (currentUser && activeClass) {
-          renderTypes();
-          renderChapters();
-          // Background preload first 3 items of active class for instant opening
-          chapters.filter(c => c.cls.toLowerCase() === activeClass.toLowerCase() || c.cls.toLowerCase() === 'all')
-            .slice(0, 3)
-            .forEach(item => {
-              if (!contentCache[item.target]) {
-                apiCall('getContent', { target: item.target }).then(r => { if (r && r.ok) contentCache[item.target] = r; }).catch(() => {});
-              }
-            });
-        }
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function (ctx) {
+            if (ctx && ctx.settings) {
+              ALL_CLASSES = ctx.settings.classes || ALL_CLASSES;
+              ALL_SUBJECTS = ctx.settings.subjects || ALL_SUBJECTS;
+              ALL_TYPES = ctx.settings.types || ALL_TYPES;
+            }
+            chapters = (ctx && ctx.chapters) ? ctx.chapters : [];
+            notifications = (ctx && ctx.notifications) ? ctx.notifications : [];
+            renderPrefCheckboxes();
+            renderNotifications();
+            if (currentUser && activeClass) {
+              renderTypes();
+              renderChapters();
+            }
+          })
+          .getPortalContext();
       }
-
-      try {
-        const cachedCtx = localStorage.getItem(CTX_CACHE_KEY);
-        if (cachedCtx) applyContextData(JSON.parse(cachedCtx));
-      } catch (e) {}
-
-      apiCall('context', {}).then(function (res) {
-        if (res && res.ok && res.context) {
-          try { localStorage.setItem(CTX_CACHE_KEY, JSON.stringify(res.context)); } catch (e) {}
-          applyContextData(res.context);
-        }
-      }).catch(function () {});
     })();
   </script>
 </body>
