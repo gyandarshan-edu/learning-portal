@@ -648,6 +648,7 @@
       let activeType = 'All';
       let chapters = [];
       let notifications = [];
+      let activeView = null;
 
       function saveSessionLocally(user) {
         try {
@@ -910,12 +911,26 @@
             '<p>' + clsLabel + '</p>' +
             '</div>' +
             '<button class="open-btn">Open Content</button>';
-          card.querySelector('button').onclick = () => openViewer(item.chapter, item.target);
+          card.querySelector('button').onclick = () => openViewer(item);
           grid.appendChild(card);
         });
       };
 
-      window.openViewer = function (title, target) {
+      window.openViewer = function (item) {
+        const title = item.chapter;
+        const target = item.target;
+        flushActiveView();
+        if (currentUser) {
+          activeView = {
+            email: currentUser.email,
+            name: currentUser.name,
+            cls: item.cls,
+            subject: item.subject,
+            type: item.type,
+            title: item.chapter,
+            openedAt: Date.now()
+          };
+        }
         const box = document.getElementById('viewerBox');
         const status = document.getElementById('viewerStatus');
         const frame = document.getElementById('simFrame');
@@ -949,6 +964,19 @@
           .getContentPayload(target);
       };
 
+      function flushActiveView() {
+        if (!activeView) return;
+        const payload = Object.assign({}, activeView, { closedAt: Date.now() });
+        activeView = null;
+        try {
+          if (typeof google !== 'undefined' && google.script && google.script.run) {
+            google.script.run.logContentView(payload);
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('pagehide', flushActiveView);
+
       window.addEventListener('popstate', function () {
         if (document.getElementById('viewerBox').style.display === 'block') {
           closeViewer(true);
@@ -956,6 +984,7 @@
       });
 
       window.closeViewer = function (fromPop) {
+        flushActiveView();
         const frame = document.getElementById('simFrame');
         frame.removeAttribute('src');
         frame.removeAttribute('srcdoc');
