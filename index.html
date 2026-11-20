@@ -728,7 +728,6 @@
         });
         document.getElementById('prefMsg').textContent = '';
         document.getElementById('pref-modal').style.display = 'flex';
-        if (reasonMsg) { document.getElementById('loginMsg').textContent = reasonMsg; }
         window.scrollTo(0, 0);
       };
 
@@ -1007,9 +1006,21 @@
         btn.disabled = true;
         btn.textContent = 'Signing in...';
         msg.textContent = '';
+        let done = false;
+        const timer = setTimeout(function () {
+          if (!done) {
+            done = true;
+            btn.disabled = false;
+            btn.textContent = 'Login';
+            msg.textContent = 'Request timed out. Please open in Incognito or use the GitHub link.';
+          }
+        }, 15000);
 
         google.script.run
           .withSuccessHandler(function (res) {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
             btn.disabled = false;
             btn.textContent = 'Login';
             if (res && res.ok && res.user) {
@@ -1019,6 +1030,9 @@
             }
           })
           .withFailureHandler(function (err) {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
             btn.disabled = false;
             btn.textContent = 'Login';
             msg.textContent = 'Error: ' + err.message;
