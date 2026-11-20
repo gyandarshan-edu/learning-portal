@@ -889,11 +889,7 @@ footer {
         activeView = null;
         try {
           const url = APPS_SCRIPT_API_URL + '?action=logView&data=' + encodeURIComponent(JSON.stringify(payload));
-          if (navigator.sendBeacon) {
-            navigator.sendBeacon(url);
-          } else {
-            fetch(url, { method: 'GET', keepalive: true }).catch(function () {});
-          }
+          fetch(url, { method: 'GET', redirect: 'follow', keepalive: true }).catch(function () {});
         } catch (e) {}
       }
 
